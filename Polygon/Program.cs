@@ -12,22 +12,30 @@ namespace Triangle
     {
         static void Main(string[] args)
         {
-            Random gen = new Random();
-            Point[] points = new Point[3];
-            Edge[] edges = new Edge[3];
-                
-
-            double sumPerimeterRightTriangles = 0;
-            double sumAreaIsoscelesTriangles = 0;
-            double countRightTriangle = 0;
-            double countIsoscelesTriangle = 0;
-
             // Баловался
             for (int i = 0; i <= 100; i++)
             {
                 Console.Write("\r {0} %", i);
                 System.Threading.Thread.Sleep(10);
-            }
+            }           
+            MethodForTriangle();
+            //==================
+            MetodForPolygon();
+
+            Console.ReadKey();
+        }
+        // Методы для триугольника
+        static void MethodForTriangle()
+        {
+            Random gen = new Random();
+            Point[] points = new Point[3];
+            Edge[] edges = new Edge[3];
+
+
+            double sumPerimeterRightTriangles = 0;
+            double sumAreaIsoscelesTriangles = 0;
+            double countRightTriangle = 0;
+            double countIsoscelesTriangle = 0;
 
             Console.Write("\nВведите количесто треугольников = ");
 
@@ -59,30 +67,7 @@ namespace Triangle
 
             Console.WriteLine("Количество прямоугольных треугольников = {0}. Средний периметр = {1}", countRightTriangle, sumPerimeterRightTriangles / countRightTriangle);
             Console.WriteLine("Количество равнобедренных треугольников = {0}. Средняя площадь = {1}", countIsoscelesTriangle, sumAreaIsoscelesTriangles / countIsoscelesTriangle);
-
-//=============================================================================================================================
-            Console.WriteLine("Введите кол-во вершин");
-            int countVertexPolygon = Convert.ToInt32(Console.ReadLine());
-
-            Point[] pointPolygon = new Point[countVertexPolygon];
-            Edge[] edgesPolygon = new Edge[countVertexPolygon];
-            ClassPolygon polygon = new ClassPolygon(pointPolygon);
-
-            double perimetrPolygon = 0;
-            double areaPolygon = 0;
-
-            RandomCoordinatesForPolygon(pointPolygon, polygon);
-
-            double[] getLengthEdgeInPolygon = EdgesLengthInPolygon(edgesPolygon, pointPolygon);
-
-                PrintPoints(pointPolygon);
-                perimetrPolygon += polygon.PerimetrPolygon(getLengthEdgeInPolygon);
-                areaPolygon += polygon.AreaPolygon(pointPolygon,areaPolygon);
-            
-            Console.WriteLine("Периметр = {0} Площадь = {1}", Math.Round(perimetrPolygon,2), Math.Round(areaPolygon,4));
-            Console.ReadKey();
         }
-        // Методы для триугольника
         static void PrintPoints(Point[] points)
         {
             Console.WriteLine("Точки");
@@ -123,9 +108,31 @@ namespace Triangle
         }
         
         // Методы для многоугольника
-        static void RandomCoordinatesForPolygon(Point[] pointPolygon, ClassPolygon polygon)
+        static void MetodForPolygon()
         {
             Random gen = new Random();
+            Console.WriteLine("Введите кол-во вершин");
+            int countVertexPolygon = Convert.ToInt32(Console.ReadLine());
+
+            Point[] pointPolygon = new Point[countVertexPolygon];
+            Edge[] edgesPolygon = new Edge[countVertexPolygon];
+            ClassPolygon polygon = new ClassPolygon(pointPolygon);
+
+            double perimetrPolygon = 0;
+            double areaPolygon = 0;
+
+            RandomCoordinatesForPolygon(gen, pointPolygon, polygon);
+
+            double[] getLengthEdgeInPolygon = EdgesLengthInPolygon(edgesPolygon, pointPolygon);
+
+            PrintPoints(pointPolygon);
+            perimetrPolygon += polygon.PerimetrPolygon(getLengthEdgeInPolygon);
+            areaPolygon += polygon.AreaPolygon(pointPolygon, areaPolygon);
+
+            Console.WriteLine("Периметр = {0} Площадь = {1}", Math.Round(perimetrPolygon, 2), Math.Round(areaPolygon, 4));
+        }
+        static void RandomCoordinatesForPolygon(Random gen,Point[] pointPolygon, ClassPolygon polygon)
+        {
             for (int i = 0; i < pointPolygon.Length; i++)
             {
                 pointPolygon[i] = new Point(gen.Next(0,10), gen.Next(0,10));
