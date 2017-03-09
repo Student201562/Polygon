@@ -111,7 +111,7 @@ namespace Triangle
         static void MetodForPolygon()
         {
             Random gen = new Random();
-            Console.WriteLine("Введите кол-во вершин");
+            Console.Write("\n\n\nВведите кол-во вершин = ");
             int countVertexPolygon = Convert.ToInt32(Console.ReadLine());
 
             Point[] pointPolygon = new Point[countVertexPolygon];

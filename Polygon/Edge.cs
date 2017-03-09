@@ -8,8 +8,8 @@ namespace Triangle
 {
     class Edge
     {
-        public Point pointA;
-        public Point pointB;
+        public readonly Point pointA;
+        public readonly Point pointB;
 
         public Edge(Point a, Point b)
         {

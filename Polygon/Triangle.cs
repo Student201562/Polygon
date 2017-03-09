@@ -8,8 +8,8 @@ namespace Triangle
 {
     class Triangle
     {
-        public Point[] points;
-        public Edge[] edges;
+        public readonly Point[] points;
+        public readonly Edge[] edges;
 
         public Triangle(Point[] masPoint, Edge[] masEdges)
         {

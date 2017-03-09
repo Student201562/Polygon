@@ -9,7 +9,7 @@ namespace Polygon
 {
     class ClassPolygon
     {
-        public Point[] pointPolygon;
+        public readonly Point[] pointPolygon;
         public ClassPolygon(Point[] masPoints)
         {
             this.pointPolygon = new Point[masPoints.Length];
