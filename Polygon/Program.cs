@@ -73,7 +73,7 @@ namespace Triangle
             Console.WriteLine("Точки");
             for (int i = 0; i < points.Length; i++)
             {
-                Console.Write(points[i].x + " " + points[i].y);
+                Console.Write(points[i].X + " " + points[i].Y);
                 Console.WriteLine();
             }
         }
@@ -135,9 +135,14 @@ namespace Triangle
         {
             for (int i = 0; i < pointPolygon.Length; i++)
             {
-                pointPolygon[i] = new Point(gen.Next(0,10), gen.Next(0,10));
-                polygon = new ClassPolygon(pointPolygon);
+                pointPolygon[i] = new Point(gen.Next(-10, 10), gen.Next(-10, 10)); //генерируем координаты точек
             }
+            polygon = new ClassPolygon(pointPolygon);
+            if (polygon.VerificationPoints() == true) //проверка точек
+            {
+                RandomCoordinatesForPolygon(gen, pointPolygon, polygon);
+            }
+            polygon = new ClassPolygon(pointPolygon);
         }
         static double[] EdgesLengthInPolygon(Edge[] edges, Point[] pointPolygon)
         {

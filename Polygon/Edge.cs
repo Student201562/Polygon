@@ -18,7 +18,7 @@ namespace Triangle
         }
         public double GetLenghteEdge()
         {
-            return Math.Sqrt(Math.Pow((pointB.x - pointA.x), 2) + Math.Pow((pointB.y - pointA.y), 2));
+            return Math.Sqrt(Math.Pow((pointB.X - pointA.X), 2) + Math.Pow((pointB.Y - pointA.Y), 2));
         }
     }
 }

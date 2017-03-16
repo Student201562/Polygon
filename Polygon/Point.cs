@@ -8,10 +8,20 @@ namespace Triangle
 {
     class Point
     {
-        public int x;
-        public int y;
+        private double x;
+        public double X
+        {
+            get { return x; }
+            set { x = value; }
+        }
 
-        public Point(int x, int y)
+        private double y { get; set; }
+        public double Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
+        public Point(double x, double y)
         {
             this.x = x;
             this.y = y;

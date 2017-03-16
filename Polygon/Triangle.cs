@@ -21,32 +21,33 @@ namespace Triangle
                 this.edges[i] = masEdges[i];
             }
         }
+
         public void CheckPointsInMassive(Point[] points)
         {
             Random gen = new Random();
             if (points[0] == points[1])
             {
-                points[0].x += gen.Next(1, 5);
-                points[0].y += gen.Next(6, 9);
+                points[0].X += gen.Next(1, 5);
+                points[0].Y += gen.Next(6, 9);
             }
             if (points[1] == points[2])
             {
-                points[1].x += gen.Next(9, 14);
-                points[1].y += gen.Next(15, 19);
+                points[1].X += gen.Next(9, 14);
+                points[1].Y += gen.Next(15, 19);
             }
             if (points[0] == points[2])
             {
-                points[2].x += gen.Next(19, 23);
-                points[2].y += gen.Next(24, 27);
+                points[2].X += gen.Next(19, 23);
+                points[2].Y += gen.Next(24, 27);
             }
             // проверка лежат ли точки на одной прямой ((x2-x0)*(y1-y0) - (y2-y0)*(x1-x0)) == 0
-            if (((points[2].x - points[0].x) * (points[1].y - points[0].y) -
-                (points[2].y - points[0].y) * (points[1].x - points[0].x)) == 0)
+            if (((points[2].X - points[0].X) * (points[1].Y - points[0].Y) -
+                (points[2].Y - points[0].Y) * (points[1].X - points[0].X)) == 0)
             {
                 for (int i = 0; i < points.Length; i++)
                 {
-                    points[i].x = gen.Next(0, 20);
-                    points[i].y = gen.Next(0, 20);
+                    points[i].X = gen.Next(0, 20);
+                    points[i].Y = gen.Next(0, 20);
                 }
             }
 
